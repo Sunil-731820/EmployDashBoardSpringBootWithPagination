@@ -51,11 +51,9 @@ public class EmployeeController {
     
     
     @GetMapping("/showFormForUpdate/{id}")
-    public String showFormForUpdate(@PathVariable ( value = "id") long id, Model model) {
-     
+    public String showFormForUpdate(@PathVariable ( value = "id") long id, Model model) { 
      // get employee from the service
      Employee employee = employeeService.getEmployeeById(id);
-     
      // set employee as a model attribute to pre-populate the form
      model.addAttribute("employee", employee);
      return "update_employee";
@@ -87,6 +85,11 @@ public class EmployeeController {
         model.addAttribute("reverseSortDir", sortDir.equals("asc") ? "desc" : "asc");
         model.addAttribute("listEmployees", listEmployees);
         return "index";
+    }
+    
+    @GetMapping("/about")
+    public String about() {
+    	return "about";
     }
     
     
